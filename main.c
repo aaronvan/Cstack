@@ -15,5 +15,6 @@ int main() {
     printf("%d\n", pop(&stk));
     printf("%d\n", pop(&stk));
     printf("%d\n", pop(&stk));
+
     return 0;
 }
