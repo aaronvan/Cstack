@@ -18,5 +18,5 @@ int main() {
     printf("%d\n", pop(&stk));
     printf("%d\n", pop(&stk));
 
-    return 0;
+    return EXIT_SUCCESS;
 }
