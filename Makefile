@@ -2,7 +2,7 @@ CC	  = gcc
 CFLAGS	  = -Wall -g
 LDFLAGS	  =
 OBJFILES  = stack.o main.o
-TARGET	  = stack
+TARGET	  = stack.out
 
 all:  $(TARGET)
 

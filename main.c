@@ -1,10 +1,12 @@
+/* running the stack */
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "stack.h"
 
 int main() {
-    stack *stk = NULL;
+    struct stack *stk = NULL;
     push(7, &stk);
     push(2, &stk);
     push(9, &stk);
