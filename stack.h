@@ -1,7 +1,7 @@
-typedef struct S_stack {
+struct stack {
     int number;
-    struct S_stack *next;
-} stack;
+    struct stack *next;
+};
 
-void push(int number, stack **stk_ptr);
-int pop(stack **stk_ptr);
+void push(int number, struct stack **stk_ptr);
+int pop(struct stack **stk_ptr);

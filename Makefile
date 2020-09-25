@@ -1,8 +1,8 @@
 CC	  = gcc
-CFLAGS	  = -Wall
+CFLAGS	  = -Wall -g
 LDFLAGS	  =
 OBJFILES  = stack.o main.o
-TARGET	  = stacktest
+TARGET	  = stack
 
 all:  $(TARGET)
 

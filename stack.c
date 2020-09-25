@@ -3,19 +3,19 @@
 
 #include "stack.h"
 
-void push(int number, stack **stk_ptr) {
-    stack *stk, *tmp;
+void push(int number, struct stack **stk_ptr) {
+    struct stack *stk, *tmp;
     stk = *stk_ptr;
-    tmp = malloc(sizeof(stack));
+    tmp = malloc(sizeof(struct stack));
     tmp->number = number;
     tmp->next = stk;
     stk = tmp;
     *stk_ptr = stk;
 }
 
-int pop(stack **stk_ptr) {
+int pop(struct stack **stk_ptr) {
     int number;
-    stack *stk, *tmp;
+    struct stack *stk, *tmp;
     stk = *stk_ptr;
     tmp = stk;
     number = tmp->number;
