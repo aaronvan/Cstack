@@ -1,3 +1,5 @@
+/* protoypes */
+
 struct stack {
     int number;
     struct stack *next;

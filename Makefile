@@ -1,13 +1,52 @@
-CC	  = gcc
-CFLAGS	  = -Wall -g
-LDFLAGS	  =
-OBJFILES  = stack.o main.o
-TARGET	  = stack.out
+# for non-GNU environments
+SHELL = /bin/zsh
 
-all:  $(TARGET)
+# set the suffix list
+.SUFFIXES:
+.SUFFIXES: .c .h .o
 
-$(TARGET): $(OBJFILES)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJFILES) $(LDFLAGS)
+# set-up the directories and compiler
+CC		= gcc
+INCLDIR	= include/
+BINDIR	= bin/
+OBJDIR	= obj/
+SRCDIR	= src/
 
+# object files go in $(OBJDIR) with the same base name as .c files
+SRC		= $(wildcard $(SRCDIR)*.c)
+_OBJS	= $(patsubst $(SRCDIR)%.c, %.o, $(SRC))
+OBJS	= $(addprefix $(OBJDIR), $(_OBJS))
+
+# compilation flags
+CFLAGS	= -Wall -O2 -g -Iinclude -std=c99 -pedantic
+
+# default goal
+.PHONY: all 
+	all: $(BIN)
+	
+# executable
+_BIN  = a.out
+BIN	  = $(addprefix $(BINDIR), $(_BIN))
+
+#linking
+$(BIN): $(OBJS) $(BINDIR) 
+	$(CC) $(CFLAGS) $< -o $@
+			
+$(BINDIR):
+	mkdir -p $(BINDIR)
+
+# compiling
+$(OBJS): $(SRC) $(OBJDIR) 
+	$(CC) $(CFLAGS) -c $< -o $@
+	 	
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+.PHONY: clean
 clean:
-	rm -f $(OBJFILES) $(TARGET) *~
+	@echo "Cleaning things up..."
+	rm -rf $(BINDIR) $(OBJDIR)
+
+# debugging tool
+print-%:
+	@echo $* = $($*)
